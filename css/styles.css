@@ -11,3 +11,6 @@ author: bootply.com
 body {
   padding-top: 70px;
 }
+.container-fluid{
+	padding-left: 0;
+}
