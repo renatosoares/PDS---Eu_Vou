@@ -1,7 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Events</h1>
-
+<!-- <p id="notice"><%= notice %></p>
 <table>
   <thead>
     <tr>
@@ -33,6 +30,179 @@
   </tbody>
 </table>
 
-<br>
+<br> -->
 
 <%= link_to 'New Event', new_event_path %>
+
+
+  <!--left ########################################################### -->
+  <div class="col-sm-3">
+        <h2>Side</h2>
+
+        <hr>
+  </div>
+  <!--/left ########################################################### -->
+
+    <!--center ########################################################### -->
+<div class="col-sm-6"> <!-- ************* coluna central ******************-->
+    <div class="row">
+<!-- 
+        ######################################################################
+        ################### formulário para criar evento #####################
+        ######################################################################
+ -->
+
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseFormulário" aria-expanded="false" aria-controls="collapseFormulário">
+        + Criar evento
+      </a>
+
+      <div class="collapse" id="collapseFormulário">
+        <div class="well">
+              Formulário 
+              <form class="form-horizontal" role="form">
+                
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="nome">Nome</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control" id="nome" placeholder="Entre seu nome">
+                  </div>
+                </div>
+
+                  <div class="form-group">
+                  <label class="control-label col-sm-2" for="nome">Data</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control" id="nome" placeholder="Entre seu nome">
+                  </div>
+                </div>
+
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="nome">Local</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control" id="nome" placeholder="Entre seu nome">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="comment">Descrição:</label>
+                  <textarea class="form-control" rows="5" id="Descricao"></textarea>
+              </div>
+
+              <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Adicionar mais info
+              </button>
+
+              <div class="collapse" id="collapseExample">
+                  <div class="well">
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="nome">Arquivo</label>
+                          <div class="col-sm-10">
+                              <input type="file" class="form-control" id="nome" placeholder="Entre seu nome">
+                          </div>
+                      </div>
+
+                    <div class="form-group">
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+                      <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                  </div>
+            
+                  </div>
+              </div>
+
+
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default pull-right">Enviar</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+
+<!-- 
+            ################## ^ /formulário para criar evento ^ #####################
+ -->
+
+<!-- evento listado na lista ########################################-->
+
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col-xs-12">
+      <h2>
+        <%= link_to event.titulo, event %>
+        <!-- ########## icones dos eventos ############-->
+        <p class="pull-right">        
+          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android"><i class="fa fa-car"></i></a>
+          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-apple"><i class="fa fa-bicycle"></i></a>
+          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-behance"><i class="fa fa-coffee"></i></a>
+          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-bitcoin"><i class="fa fa-bed"></i></a>
+          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-buysellads"><i class="fa fa-camera-retro"></i></a>
+        </p>
+        <!-- ########## ^ /icones dos eventos ^ ############-->
+      </h2>
+      <p>
+        <%= event.descricao %>
+        <%= link_to 'Leia mais.', event, class: 'btn btn-default btn-xs' %>
+     <!--    <a href="detalhes.html">
+          <button type="button" class="btn btn-default btn-xs">Leia mais.</button>
+        </a> -->
+      </p>
+      <p class="pull-right">
+        <a href="#"><i class="fa fa-check-square-o icone-evento-indexlist"></i> EU VOU! <span class="badge">42</span></a>
+      </p>
+      <ul class="list-inline">
+          <li> 
+              <a href="#">
+                  <i class="fa fa-calendar "></i> <i class="fa fa-clock-o"></i><%= event.data %> 
+                  <i class="fa fa-map-marker"></i> <%= event.endereco %>
+              </a>
+          </li>
+          <li>
+              <a href="#"><i class="fa fa-comments "></i> 2 Comentários</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-wrench"></i><%= link_to 'Editar', edit_event_path(event) %></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-trash-o"></i><%= link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' } %></a>
+          </li>
+              
+      </ul>
+    </div>
+    <% end %>
+  </div>
+    <hr>
+  <!-- ^ /evento listado na lista ^ ########################################-->
+</div> <!-- ************* ^ /coluna central ^ ****************** -->
+
+  <!-- ########################################################### lado direito -->
+  <div class="col-sm-3">
+      <h2>Side</h2>
+
+        <hr>
+
+  </div>
+  <!-- ########################################################### /lado direito -->
