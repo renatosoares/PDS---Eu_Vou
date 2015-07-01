@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<% unless user_signed_in? %>
+    <p><%= link_to "Sign_in", user_session_path %></p>
+<%end%>
 <h1>Listing Events</h1>
-
 <table>
   <thead>
     <tr>
@@ -25,14 +26,17 @@
         <td><% event.categories.each do |c|%>
               <%=c.titulo %><br><%end%></td>
         <td><%= event.imagem %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if user_signed_in? %>
+            <td><%= link_to 'Show', event %></td>
+            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Event', new_event_path %>
+<%if user_signed_in? %>
+    <%= link_to 'New Event', new_event_path %>
+<%end%>
