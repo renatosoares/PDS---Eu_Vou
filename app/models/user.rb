@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
-  has_many :events
+  has_many :events_created, class_name: 'Event'
   validates_presence_of :nome
 
 end

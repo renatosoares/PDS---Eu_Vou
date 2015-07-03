@@ -28,8 +28,10 @@
         <td><%= event.imagem %></td>
         <%if user_signed_in? %>
             <td><%= link_to 'Show', event %></td>
-            <td><%= link_to 'Edit', edit_event_path(event) %></td>
-            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if event.creator == current_user %>
+                <td><%= link_to 'Edit', edit_event_path(event) %></td>
+                <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
         <%end%>
       </tr>
     <% end %>
