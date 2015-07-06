@@ -1,26 +1,19 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+<!--<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   <div class="field"> 
     
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+
   </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    
   </div>
 <% end %>
+-->
 
-<%= render "devise/shared/links" %>
 
     <div class="container">    
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
@@ -39,14 +32,17 @@
                             <div style="margin-bottom: 25px" class="input-group">
 
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <%= f.label :email %><br />
-                                        <%= f.email_field :email, autofocus: true %>
-                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                       <!-- <%= f.label :email %> --> 
+                                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "email" %>
+                                        <!-- <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email"> -->                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                            <!-- <%= f.label :password %><br /> -->
+                                            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "password"%>
+                                        <!-- <input id="login-password" type="password" class="form-control" name="password" placeholder="password"> -->
+
                                     </div>
                                     
 
@@ -54,7 +50,13 @@
                             <div class="input-group">
                                       <div class="checkbox">
                                         <label>
-                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                          <% if devise_mapping.rememberable? -%>
+                                            <div class="field">
+                                              <%= f.check_box :remember_me %>
+                                              <%= f.label :remember_me %>
+                                            </div>
+                                          <% end -%>
+                                          <!-- <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me -->
                                         </label>
                                       </div>
                                     </div>
@@ -64,8 +66,9 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
-                                      <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                                      <%= f.submit "Log in", class: "btn btn-success" %>
+                                      <!-- <a id="btn-login" href="#" class="btn btn-success">Login</a> -->
+                                      <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
 
                                     </div>
                                 </div>
@@ -74,10 +77,11 @@
                                 <div class="form-group">
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                            Don't have an account! 
+                                   <!--          Don't have an account! 
                                         <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                                             Sign Up Here
-                                        </a>
+                                        </a> -->
+                                        <%= render "devise/shared/links" %>
                                         </div>
                                     </div>
                                 </div>    
