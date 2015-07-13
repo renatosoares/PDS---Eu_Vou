@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :confirmable, :lockable
   has_and_belongs_to_many :events
   has_many :events_created, class_name: 'Event'
+  scope :admins, -> { where(admin: true) }
   validates_presence_of :nome
 
 end
