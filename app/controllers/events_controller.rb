@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order(:eu_vou_rating)
   end
 
   # GET /events/1
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.all.order(:eu_vou_rating)
+    @event = Event.new
   end
 
   # GET /events/1/edit
