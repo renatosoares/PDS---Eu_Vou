@@ -5,6 +5,7 @@ class EuvouController < ApplicationController
   def confirmation
     if @event.users.exclude?(current_user)
       @event.users << current_user
+      @event.eu_vou_rating = @event.eu_vou_rating + 1
       respond_to do |format|
         if @event.save
           format.html { redirect_to root_path, notice: 'EuVou! Confirmado.' }
