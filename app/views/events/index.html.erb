@@ -13,6 +13,7 @@
       <th>Categorias</th>
       <th>Imagem</th>
       <th>Criado por</th>
+      <th>EuVou!</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,8 +28,10 @@
         <td><% event.categories.each do |c|%>
               <%=c.titulo %><br><%end%></td>
         <td><%= event.imagem %></td>
-        <td><%=event.creator.nome %></td>
+        <td><%= event.creator.nome %></td>
+        <td><%= event.users.count %></td>
         <%if user_signed_in? %>
+            <td><%= button_to 'EuVou!', euvou_confirmation_path(id: event.id), :disabled => event.users.include?(current_user) %></td>
             <td><%= link_to 'Show', event %></td>
             <% if event.creator == current_user %>
                 <td><%= link_to 'Edit', edit_event_path(event) %></td>
