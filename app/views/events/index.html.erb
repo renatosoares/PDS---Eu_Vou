@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% unless user_signed_in? %>
-    <p><%= link_to "Sign_in", user_session_path %></p>
-<%end%>
+<p><%= (link_to "Sign_in", user_session_path) unless user_signed_in? %></p>
 <h1>Listing Events</h1>
 <table>
   <thead>
@@ -44,6 +42,5 @@
 </table>
 
 <br>
-<%if user_signed_in? %>
-    <%= link_to 'New Event', new_event_path %>
-<%end%>
+<p><%= (link_to 'New Event', new_event_path) if user_signed_in? %></p>
+

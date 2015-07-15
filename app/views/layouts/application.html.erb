@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Euvou</title>
+  <title>EuVou!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,6 +10,7 @@
 <% if user_signed_in? %>
     <p>Olá, <%= current_user.nome %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
 <% end %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
