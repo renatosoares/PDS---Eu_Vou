@@ -1,63 +1,3 @@
-<<<<<<< HEAD
-
-
-
-<!-- <p id="notice"><%= notice %></p>
->>>>>>> front_X_back
-=======
-<p id="notice"><%= notice %></p>
-<p><%= (link_to "Sign_in", user_session_path) unless user_signed_in? %></p>
-<h1>Listing Events</h1>
->>>>>>> remotes/origin/issue_Relacionamento_Users_Events
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Descricao</th>
-      <th>Endereco</th>
-      <th>Data</th>
-      <th>Categorias</th>
-      <th>Imagem</th>
-      <th>Criado por</th>
-      <th>EuVou!</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.titulo %></td>
-        <td><%= event.descricao %></td>
-        <td><%= event.endereco %></td>
-        <td><%= event.data %></td>
-        <td><% event.categories.each do |c|%>
-              <%=c.titulo %><br><%end%></td>
-        <td><%= event.imagem %></td>
-        <td><%= event.creator.nome %></td>
-        <td><%= event.eu_vou_rating %></td>
-        <%if user_signed_in? %>
-            <td><%= button_to 'EuVou!', euvou_confirmation_path(id: event.id), :disabled => event.users.include?(current_user) %></td>
-            <td><%= link_to 'Show', event %></td>
-            <% if event.creator == current_user %>
-                <td><%= link_to 'Edit', edit_event_path(event) %></td>
-                <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <%end%>
-        <%end%>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<<<<<<< HEAD
-<br>
-<<<<<<< HEAD
-<%if user_signed_in? %>
-    <%= link_to 'New Event', new_event_path %>
-<%end%>
-=======
-<br> -->
-
 <!-- ######################  carouseul component ########################  -->
   <div class="container-fluid">
   
@@ -361,7 +301,4 @@
     <script src="js/bootstrap.min.js"></script>
     -->
       <!-- FIM  ^ script reference  ^ ############################################# -->    
-=======
 <p><%= (link_to 'New Event', new_event_path) if user_signed_in? %></p>
-
->>>>>>> remotes/origin/issue_Relacionamento_Users_Events
