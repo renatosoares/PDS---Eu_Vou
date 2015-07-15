@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701113414) do
+ActiveRecord::Schema.define(version: 20150713175454) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "titulo"
@@ -33,9 +33,20 @@ ActiveRecord::Schema.define(version: 20150701113414) do
     t.string   "endereco"
     t.datetime "data"
     t.string   "imagem"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "creator_id"
+    t.integer  "eu_vou_rating", default: 0
   end
+
+  add_index "events", ["creator_id"], name: "index_events_on_creator_id"
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id",  null: false
+  end
+
+  add_index "events_users", ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "nome",                                   null: false

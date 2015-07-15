@@ -1,0 +1,2 @@
+module EuvouHelper
+end

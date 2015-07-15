@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
   <title>Euvou</title>
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+=======
+  <title>EuVou!</title>
+>>>>>>> remotes/origin/issue_Relacionamento_Users_Events
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
+<<<<<<< HEAD
 
 <!-- ################### menu suspenso ###########################################-->
 
@@ -68,6 +73,18 @@
 
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
 
+=======
+<% if user_signed_in? %>
+    <p>
+      Olá,
+      <%= link_to current_user.nome, edit_user_registration_path %> -
+      <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %>
+    </p>
+<% end %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+>>>>>>> remotes/origin/issue_Relacionamento_Users_Events
 
 <%= yield %>
 

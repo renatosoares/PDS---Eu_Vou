@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
   has_and_belongs_to_many :categories
-  belongs_to :user
+  has_and_belongs_to_many :users
+  belongs_to :creator, class_name: 'User'
+  scope :ativos, ->{ where('data >= ?', Time.now) }
+  scope :expirados, ->{ where('data < ?', Time.now) }
 end

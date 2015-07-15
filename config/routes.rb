@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'euvou/confirmation', param: :id
+
   devise_for :users
   resources :events
   resources :categories
