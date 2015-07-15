@@ -5,12 +5,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-<<<<<<< HEAD
-    @events = Event.all
     @event = Event.new
-=======
     @events = Event.ativos.order(eu_vou_rating: :desc)
->>>>>>> remotes/origin/issue_Relacionamento_Users_Events
   end
 
   # GET /events/1
