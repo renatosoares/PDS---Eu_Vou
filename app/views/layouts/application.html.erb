@@ -8,7 +8,8 @@
 </head>
 <body>
 <% if user_signed_in? %>
-    <p>Olá, <%= current_user.nome %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
+    <p>Olá, <%= link_to current_user.nome, edit_user_registration_path %>
+      - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
 <% end %>
 
 <p class="notice"><%= notice %></p>
