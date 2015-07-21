@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <title>Euvou</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+=======
+<head>  
+    <title>Eu Vou!</title>
+>>>>>>> master
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,7 +18,10 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 338b9155c3c3cdd0ec1b1811fe93273138ffee49
 <!-- ################### menu suspenso ###########################################-->
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -61,9 +69,23 @@
                         <h4><i class="fa fa-user text-primary"></i> <%= link_to "Sign_in", user_session_path %></h4>
                     <%end%>
 
+<<<<<<< HEAD
+                        <% if user_signed_in? %>
+                            <p>
+                                Olá,
+                                <%= link_to current_user.nome, edit_user_registration_path %> -
+                                <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %>
+                            </p>
+                        <% end %>
+=======
                     <% if user_signed_in? %>
-                        <p>Olá, <%= current_user.nome %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
+                        <p>
+                        	Olá,
+                        	<%= link_to current_user.nome, edit_user_registration_path %> - 
+                        	<%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %>
+                        </p>
                     <% end %>
+>>>>>>> 338b9155c3c3cdd0ec1b1811fe93273138ffee49
 
                 </div>
     	   </div>
@@ -72,6 +94,11 @@
 
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
 
+<<<<<<< HEAD
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+=======
+>>>>>>> 338b9155c3c3cdd0ec1b1811fe93273138ffee49
 
 <%= yield %>
 

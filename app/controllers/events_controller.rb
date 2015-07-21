@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only:  [:edit, :update, :destroy, :create]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
     @event = Event.new
+    @events = Event.ativos.order(eu_vou_rating: :desc)
   end
 
   # GET /events/1
@@ -27,6 +27,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.creator = current_user
 
     respond_to do |format|
       if @event.save
