@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator = current_user
+    current_user.point_for_create_event
 
     respond_to do |format|
       if @event.save
