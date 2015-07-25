@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>  
     <title>Eu Vou!</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +9,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
 </head>
 <body>
-
 <!-- ################### menu suspenso ###########################################-->
-
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="row">
     	   <div class="navbar-header ">
@@ -44,7 +40,6 @@
                       </ul>
                     </li>
     	   	</ul>
-            
     	   	<div class="col-sm-5 col-md-5">
                   <form class="navbar-form" role="search">
                     <div class="input-group">
@@ -60,8 +55,6 @@
                     <% unless user_signed_in? %>
                         <h4><i class="fa fa-user text-primary"></i> <%= link_to "Sign_in", user_session_path %></h4>
                     <%end%>
-
-
                     <% if user_signed_in? %>
                         <p>
                         	Olá,
@@ -74,13 +67,9 @@
     	   </div>
         </div>
     </nav>
-
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
+<%= yield %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= yield %>
-
- 
-
 </body>
 </html>

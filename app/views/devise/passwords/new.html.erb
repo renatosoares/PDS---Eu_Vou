@@ -1,5 +1,4 @@
-<h2>Forgot your password?</h2>
-
+<h2>Recuperar Senha</h2>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -14,3 +13,142 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<div class="eternity-form">
+    <section id="demo3" class="colorBg3 colorBg"  data-panel="third">
+        <div class=" container">
+            <div class="forgot-password-section" data-animation="bounceInLeft">
+                <div class="section-title">
+                    <h3>Recuperar Senha</h3>
+                </div>
+                <div class="forgot-content">
+                	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  					<%= devise_error_messages! %>
+                    <!-- <form > -->
+                    <!--
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                
+                                <input type="text" class="form-control " placeholder="Username" required="required" />
+                            </div>
+                        </div> -->
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
+                                <!-- <input type="email" class="form-control " placeholder="Email Id" required="required" /> -->
+                                <!-- # <%= f.label :email %><br />--> 
+    							<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: "required" %>
+                            </div>
+                        </div>
+                        <div class="forget-form-action clearfix">
+                            <a class="btn btn-success pull-left blue-btn" href="#demo1"><i class="icon-chevron-left"></i>&nbsp;&nbsp; Voltar </a>
+                            <button type="submit" class="btn btn-success pull-right green-btn"><%= f.submit "Envie-me instruções", class: "btn  pull-right green-btn"%> &nbsp;&nbsp; <i class="icon-chevron-right"></i></button>
+                        </div>
+                    <!-- </form> -->
+                    <% end %>
+                </div>
+                <div class="login-form-links link1 " data-animation="fadeInLeftBig" data-animation-delay=".2s">
+                    <%= render "devise/shared/links" %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ######################### script dos formulários ############################## -->
+    <script type="text/javascript">
+        $(function () {
+            $("input").iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $(".dark input").iCheck({
+                checkboxClass: 'icheckbox_polaris',
+                increaseArea: '20%' // optional
+            });
+            $(".form-control").focus(function () {
+                $(this).closest(".textbox-wrap").addClass("focused");
+            }).blur(function () {
+                $(this).closest(".textbox-wrap").removeClass("focused");
+            });
+
+            //On Scroll Animations
+
+
+            if ($(window).width() >= 968 && !Modernizr.touch && Modernizr.cssanimations) {
+
+                $("body").addClass("scroll-animations-activated");
+                $('[data-animation-delay]').each(function () {
+                    var animationDelay = $(this).data("animation-delay");
+                    $(this).css({
+                        "-webkit-animation-delay": animationDelay,
+                        "-moz-animation-delay": animationDelay,
+                        "-o-animation-delay": animationDelay,
+                        "-ms-animation-delay": animationDelay,
+                        "animation-delay": animationDelay
+                    });
+
+                });
+                $('[data-animation]').waypoint(function (direction) {
+                    if (direction == "down") {
+                        $(this).addClass("animated " + $(this).data("animation"));
+
+                    }
+                }, {
+                    offset: '90%'
+                }).waypoint(function (direction) {
+                    if (direction == "up") {
+                        $(this).removeClass("animated " + $(this).data("animation"));
+
+                    }
+                }, {
+                    offset: $(window).height() + 1
+                });
+            }
+
+            //End On Scroll Animations
+
+
+            $(".main-nav a[href]").click(function () {
+                var scrollElm = $(this).attr("href");
+
+                $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
+
+                $(".main-nav a[href]").removeClass("active");
+                $(this).addClass("active");
+            });
+
+
+
+
+            if ($(window).width() > 1000 && !Modernizr.touch) {
+                var options = {
+                    $menu: ".main-nav",
+                    menuSelector: 'a',
+                    panelSelector: 'section',
+                    namespace: '.panelSnap',
+                    onSnapStart: function () { },
+                    onSnapFinish: function ($target) {
+                        $target.find('input:first').focus();
+                    },
+                    directionThreshold: 50,
+                    slideSpeed: 200
+                };
+                $('body').panelSnap(options);
+
+            }
+
+            $(".colorBg a[href]").click(function () {
+                var scrollElm = $(this).attr("href");
+
+                $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
+
+                return false;
+            });
+
+
+           
+
+        });
+    </script>
+<!-- /^ ####################### script dos formulários ############################## -->
+</div>

@@ -41,7 +41,7 @@
                             
                                 </div>
                             </div>
-                            <%= f.submit "Log in", class: "btn btn-success pull-right green-btn" %><i class="icon-chevron-right"></i>                       
+                           <button class="btn btn-success pull-right green-btn"> <%= f.submit "Log in", class: "btn btn-success pull-right green-btn" %> &nbsp;<i class="icon-chevron-right pull-right"></i>  </button>                      
                         </div>
                     <% end %>
                 </div>
@@ -58,107 +58,9 @@
             </div>
         </div>
     </section>
-    <section class="colorBg2 colorBg" id="demo2" data-panel="second">
-        <div class=" container">
-            <!-- #region Registration Form -->
-            <div class="registration-form-section">
-                <form>
-                    <div class="section-title reg-header " data-animation="fadeInDown">
-                        <h3>Faça sua conta aqui</h3>
-
-                    </div>
-                    <div class="clearfix">
-                        <div class="col-sm-6 registration-left-section  " data-animation="fadeInUp">
-                            <div class="reg-content">
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                        <input type="text" class="form-control " placeholder="FirstName" required="required" />
-                                    </div>
-                                </div>
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                        <input type="text" class="form-control " placeholder="LastName" required="required" />
-                                    </div>
-                                </div>
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
-                                        <input type="email" class="form-control " placeholder="Email Id" required="required" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 registration-right-section " data-animation="fadeInUp">
-                            <div class="reg-content">
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                        <input type="text" class="form-control " placeholder="UserName" required="required" />
-                                    </div>
-                                </div>
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
-                                        <input type="password" class="form-control " placeholder="Password" required="required" />
-                                    </div>
-                                </div>
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
-                                        <input type="password" class="form-control " placeholder="Confirm-Password" required="required" />
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="registration-form-action clearfix " data-animation="fadeInUp" data-animation-delay=".15s">
-                        <a href="#demo1" class="btn btn-success pull-left blue-btn ">
-                            <i class="icon-chevron-left"></i>&nbsp; &nbsp;Back To Login  
-                        </a>
-                        <button type="submit" class="btn btn-success pull-right green-btn ">Registre-se agora! &nbsp; <i class="icon-chevron-right"></i></button>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo3" class="colorBg3 colorBg"  data-panel="third">
-        <div class=" container">
-
-            <div class="forgot-password-section" data-animation="bounceInLeft">
-                <div class="section-title">
-                    <h3>Recuperar Senha</h3>
-                </div>
-                <div class="forgot-content">
-                    <form >
-                        <div class="textbox-wrap">
-                            <div class="input-group">
-                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                <input type="text" class="form-control " placeholder="Username" required="required" />
-                            </div>
-                        </div>
-                        <div class="textbox-wrap">
-                            <div class="input-group">
-                                <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
-                                <input type="email" class="form-control " placeholder="Email Id" required="required" />
-                            </div>
-                        </div>
-                        <div class="forget-form-action clearfix">
-                            <a class="btn btn-success pull-left blue-btn" href="#demo1"><i class="icon-chevron-left"></i>&nbsp;&nbsp;Back  </a>
-                            <button type="submit" class="btn btn-success pull-right green-btn">Submit &nbsp;&nbsp; <i class="icon-chevron-right"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
    
 
-        </div>
-    </section>
+
 
 <!-- 
     <script src="/assets/jquery-1.9.1.js"></script>
@@ -169,6 +71,8 @@
     <script src="/assets/waypoints.min.js"></script>
     <script src="/assets/jquery.panelSnap.js"></script>
  -->
+
+<!-- ######################### script dos formulários ############################## -->
     <script type="text/javascript">
         $(function () {
             $("input").iCheck({
@@ -264,4 +168,5 @@
 
         });
     </script>
+<!-- /^ ####################### script dos formulários ############################## -->
     </div>
