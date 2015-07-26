@@ -47,7 +47,9 @@
         <div class=" container">
             <!-- #region Registration Form -->
             <div class="registration-form-section">
-                <form>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <!-- <form> -->
                     <div class="section-title reg-header " data-animation="fadeInDown">
                         <h3>Faça sua conta aqui</h3>
 
@@ -57,8 +59,16 @@
                             <div class="reg-content">
                                 <div class="textbox-wrap">
                                     <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
+                                         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: "required"%>
+                                        <!-- <input type="email" class="form-control " placeholder="Email Id" required="required" /> -->
+                                    </div>
+                                </div>
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
                                         <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                        <input type="text" class="form-control " placeholder="FirstName" required="required" />
+                                         <%= f.text_field :nome, class: "form-control", placeholder: "Nome", required: "required"%>
+                                        <!-- <input type="text" class="form-control " placeholder="FirstName" required="required" /> -->
                                     </div>
                                 </div>
                                 <div class="textbox-wrap">
@@ -67,12 +77,7 @@
                                         <input type="text" class="form-control " placeholder="LastName" required="required" />
                                     </div>
                                 </div>
-                                <div class="textbox-wrap">
-                                    <div class="input-group">
-                                        <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
-                                        <input type="email" class="form-control " placeholder="Email Id" required="required" />
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-sm-6 registration-right-section " data-animation="fadeInUp">
@@ -107,7 +112,8 @@
                         <button type="submit" class="btn btn-success pull-right green-btn ">Registre-se agora! &nbsp; <i class="icon-chevron-right"></i></button>
 
                     </div>
-                </form>
+                <!-- </form> -->
+                <% end %>
             </div>
         </div>
     </section>
