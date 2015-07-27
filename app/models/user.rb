@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
   has_and_belongs_to_many :events
-  has_many :events_created, class_name: 'Event'
+  has_many :events_created, foreign_key: "creator_id", class_name: 'Event'
   scope :admins, -> { where(admin: true) }
   validates_presence_of :nome
 

@@ -72,7 +72,7 @@ class EventsController < ApplicationController
     end
 
     def set_property
-      @event = current_user.events.find(params[:id])
+      @event = current_user.events_created.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
