@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   private
   def increment_point(valor)
-    self.pontuacao = self.pontuacao + valor
+    self.pontuacao += valor
     self.save
   end
 
