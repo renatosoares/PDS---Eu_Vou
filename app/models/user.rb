@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
 
   def my_level
-    if (1..100).include?(self.pontuacao)
+    if (0..100).include?(self.pontuacao)
       'Saidinho'
     elsif (101..300).include?(self.pontuacao)
       'Baladeiro'
