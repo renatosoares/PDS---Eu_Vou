@@ -1,44 +1,92 @@
-<h2>Sign up</h2>
+<div class="eternity-form">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<!-- menu lateral ################################################################################## -->
+     <%= render file: "devise/custom/_menu_lateral.html.erb" %>
+<!-- /menu lateral ################################################################################## -->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+ <section class="colorBg2 colorBg" id="demo2" data-panel="second">
+        <div class=" container">
+            <!-- #region Registration Form -->
+            <div class="registration-form-section">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <!-- <form> -->
+                    <div class="section-title reg-header " data-animation="fadeInDown">
+                        <h3>Faça sua conta aqui</h3>
 
-    <div class="field">
-      <%= f.label :nome %><br />
-      <%= f.text_field :nome %>
-    </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-sm-6 registration-left-section  " data-animation="fadeInUp">
+                            <div class="reg-content">
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
+                                         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: "required"%>
+                                        <!-- <input type="email" class="form-control " placeholder="Email Id" required="required" /> -->
+                                    </div>
+                                </div>
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                         <%= f.text_field :nome, class: "form-control", placeholder: "Nome", required: "required" %>
+                                        <!-- <input type="text" class="form-control " placeholder="FirstName" required="required" /> -->
+                                    </div>
+                                </div>
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                        <%= f.text_field :sexo, class: "form-control", placeholder: "Sexo", required: "required" %>
+                                       <!--  <input type="text" class="form-control " placeholder="LastName" required="required" /> -->
+                                    </div>
+                                </div>
 
-    <div class="field">
-      <%= f.label :sexo %><br />
-      <%= f.text_field :sexo %>
-    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 registration-right-section " data-animation="fadeInUp">
+                            <div class="reg-content">
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                        <%= f.text_field :foto, class: "form-control", placeholder: "Foto", required: "required" %>
+                                        <!-- <input type="text" class="form-control " placeholder="UserName" required="required" /> -->
+                                    </div>
+                                </div>
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password", required: "required" %>
+                                        <!-- <input type="password" class="form-control " placeholder="Password" required="required" /> -->
+                                    </div>
+                                    <% if @minimum_password_length %>
+                                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                    <% end %>
+                                </div>
+                                <div class="textbox-wrap">
+                                    <div class="input-group">
+                                        <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control ", placeholder: "Confirm-Password", required: "required" %>
+                                       <!--  <input type="password" class="form-control " placeholder="Confirm-Password" required="required" /> -->
+                                    </div>
+                                </div>
 
-    <div class="field">
-      <%= f.label :foto %><br />
-      <%= f.text_field :foto %>
-    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                            </div>
+                        </div>
+                    </div>
+       
+                    <div class="registration-form-action clearfix " data-animation="fadeInUp" data-animation-delay=".15s">
+                        <a href="#demo1" class="btn btn-success pull-left blue-btn ">
+                            <i class="icon-chevron-left"></i>&nbsp; &nbsp;Back To Login  
+                        </a>
+                        <button type="submit" class="btn btn-success pull-right green-btn "><%= f.submit "Sign up", class: "btn btn-success pull-right green-btn " %> &nbsp; <i class="icon-chevron-right"></i></button>
+                    </div>
+                    <div class="registration-form-action clearfix " data-animation="fadeInUp" data-animation-delay=".15s">
+                        <%= render "devise/shared/links" %>
+                        <%= render file: "devise/custom/_scripts.html.erb" %>
+                    </div>
+                <!-- </form> -->
+                <% end %>
+            </div>
+        </div>
+    </section>    
+</div>    

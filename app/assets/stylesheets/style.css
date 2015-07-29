@@ -23,7 +23,7 @@
 	display: inline-block;
 	width: 146px;
 	height: 30px;
-	background: url(../img/logo.png) center center no-repeat;
+	background: url(/assets/logo.png) center center no-repeat;
 	text-indent: -9999px;
 }
 
@@ -46,7 +46,7 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 	
     .logo a {
-    	background-image: url(../img/logo@2x.png) !important; background-repeat: no-repeat !important; background-size: 146px 30px !important;
+    	background-image: url(/assets/logo@2x.png) !important; background-repeat: no-repeat !important; background-size: 146px 30px !important;
     }
 	
 }

@@ -1,3 +1,7 @@
+
+    <script type="text/javascript" src="/assets/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/assets/bootstrap.js"></script>
+    <script type="text/javascript" src="/assets/jssor.slider.mini.js"></script>
 <!-- ######################  carouseul component ########################  -->
   <div class="container-fluid">
   
@@ -167,12 +171,11 @@
       <h2>
         <%= link_to event.titulo, event %>
         <!-- ########## icones dos eventos ############-->
-        <p class="pull-right">        
-          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android"><i class="fa fa-car"></i></a>
-          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-apple"><i class="fa fa-bicycle"></i></a>
-          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-behance"><i class="fa fa-coffee"></i></a>
-          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-bitcoin"><i class="fa fa-bed"></i></a>
-          <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-buysellads"><i class="fa fa-camera-retro"></i></a>
+        <p class="pull-right">
+            <% @categorias =  Category.all%>
+            <% event.category_ids.each do |item| %>
+                <a href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android"><i class="<%= @categorias[item-1].icone %>"></i></a>   
+            <% end %>        
         </p>
         <!-- ########## ^ /icones dos eventos ^ ############-->
       </h2>
@@ -296,9 +299,13 @@
 
     <!-- ##################################################################### -->
   <!-- script references -->
-    <!--
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    -->
+    
+    <script src="/assets/jquery-1.9.1.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    
       <!-- FIM  ^ script reference  ^ ############################################# -->    
 <p><%= (link_to 'New Event', new_event_path) if user_signed_in? %></p>
+  <!-- script references -->
+    
+    
+    <!-- FIM  ^ script reference  ^ ############################################# -->    
