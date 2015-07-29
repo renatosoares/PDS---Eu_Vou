@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only:  [:edit, :update, :destroy, :create]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_property, only: [:edit, :update, :destroy]
+  before_action :set_event, only: [:show]
   # GET /events
   # GET /events.json
   def index
@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator = current_user
+    current_user.point_for_create_event
 
     respond_to do |format|
       if @event.save
@@ -68,6 +69,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_property
+      @event = current_user.events_created.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
