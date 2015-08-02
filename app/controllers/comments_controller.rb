@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:  [:edit, :update, :destroy, :create]
+  before_action :set_property, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:show]
 
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order(data: :desc)
   end
 
   # GET /comments/1
@@ -14,7 +16,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = current_user.comments.build
   end
 
   # GET /comments/1/edit
@@ -24,8 +26,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
-
+    @comment = current_user.comments.build(comment_params)
+    @comment.data = DateTime.now;
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -40,6 +42,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    @comment.data = DateTime.now;
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -70,5 +73,9 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:conteudo, :data, :user_id, :event_id)
+    end
+
+    def set_property
+      @comment = current_user.comments.find(params[:id])
     end
 end
