@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   post 'euvou/confirmation', param: :id
 
   devise_for :users
