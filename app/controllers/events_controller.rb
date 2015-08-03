@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @comment = current_user.comments.build
   end
 
   # GET /events/new
