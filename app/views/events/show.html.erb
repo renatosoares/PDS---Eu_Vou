@@ -60,13 +60,18 @@
                 <!-- Blog Comments -->
                 <!-- Comments Form -->
                 <div class="well">
+                  <%= form_for(@comment) do |f| %>
                     <h4>Leave a Comment:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                          <%= f.text_area :conteudo, class: "form-control", rows: "3" %>
+                            <!--<textarea class="form-control" rows="3"></textarea>-->
+                          <%= f.hidden_field :event_id, :value => @event.id  %>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <%= f.submit "Enviar", class: "btn btn-primary"  %>
+                        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
                     </form>
+                  <% end %>
                 </div>
                 <hr>
                 <!-- Posted Comments -->
