@@ -68,11 +68,16 @@
                 <a href="#"><i class="fa fa-trash-o"></i><%= link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' } %></a>
               </li>
           </ul>
-            <form class="pull-right col-md-3 btn btn-primary" style="padding: 0;" action="euvou/confirmation" method="post">
+            <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary") do %>
+             <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" >
+                <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge"><%= event.eu_vou_rating %></span>
+            </button>
+            <%end%>
+            <!--<form class="pull-right col-md-3 btn btn-primary" style="padding: 0;" action="euvou/confirmation" method="post">
                 <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" > 
                     <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge"><%= @event.eu_vou_rating %></span>
                 </button> 
-            </form>
+            </form>-->
       </div>
       <hr>
     </div>
