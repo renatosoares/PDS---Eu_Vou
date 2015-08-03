@@ -100,7 +100,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <%= link_to 'Edit', edit_event_path(@event) %> |
+                    <%= (link_to 'Edit', edit_event_path(@event)) if current_user == @event.creator %> |
                     <%= link_to 'Back', events_path %>
                     <p id="notice"><%= notice %></p>
                 </div>
