@@ -74,6 +74,8 @@ class EventsController < ApplicationController
 
     def set_property
       @event = current_user.events_created.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to events_url, notice: 'Você não tem permissão para isso.'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

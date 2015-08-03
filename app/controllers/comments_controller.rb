@@ -78,5 +78,7 @@ class CommentsController < ApplicationController
 
     def set_property
       @comment = current_user.comments.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to @comment.event, notice: 'Você não tem permissão para isso.'
     end
 end
