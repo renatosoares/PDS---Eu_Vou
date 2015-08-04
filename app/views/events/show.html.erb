@@ -24,10 +24,10 @@
                         <div class="panel-body col-lg-4">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-calendar fa-fw"></i>  <%= @event.data %>
+                                    <i class="fa fa-calendar fa-fw"></i>  <%= @event.data.strftime('%d-%m-%Y') %>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-clock-o fa-fw"></i> 18 horas
+                                    <i class="fa fa-clock-o fa-fw"></i> <%= @event.data.strftime('%R') %>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-globe fa-fw"></i> <%= @event.endereco %>

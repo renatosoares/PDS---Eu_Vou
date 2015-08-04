@@ -54,7 +54,7 @@
           <ul class="list-inline col-md-9">
               <li> 
                   <a href="#">
-                      <i class="fa fa-calendar "></i> <i class="fa fa-clock-o"></i><%= event.data %> 
+                      <i class="fa fa-calendar "></i> <i class="fa fa-clock-o"></i><%= event.data.strftime('%d-%m-%Y') %>
                       <i class="fa fa-map-marker"></i> <%= event.endereco %>
                   </a>
               </li>
@@ -62,10 +62,10 @@
                   <a href="#"><i class="fa fa-comments "></i><%=event.comments.count%> Comentários</a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-wrench"></i><%= link_to 'Editar', edit_event_path(event) %></a>
+                <a href="#"><i class="fa fa-wrench"></i><%= (link_to 'Editar', edit_event_path(event)) if current_user == event.creator %></a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-trash-o"></i><%= link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' } %></a>
+                <a href="#"><i class="fa fa-trash-o"></i><%= (link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' }) if current_user == event.creator %></a>
               </li>
           </ul>
             <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary") do %>
