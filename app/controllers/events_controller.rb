@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @comment = current_user.comments.build    #problemas na hora que visualiza detalhes do evento sem esta logado com o usuário que criou.
+    @comment = current_user.comments.build #issue #16 por Renato -> problemas na hora que visualiza detalhes do evento sem esta logado com o usuário que criou. 
   end
 
   # GET /events/new

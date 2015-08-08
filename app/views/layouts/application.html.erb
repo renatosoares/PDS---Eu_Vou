@@ -51,7 +51,6 @@
                   </form>
     	   	</div>
                 <div class=" col-sm-2 col-md-2 pull-right">
-                    <p id="notice"><%= notice %></p>
                     <% unless user_signed_in? %>
                         <h4><i class="fa fa-user text-primary"></i> <%= link_to "Sign_in", user_session_path %></h4>
                     <%end%>
@@ -68,8 +67,16 @@
         </div>
     </nav>
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
-<%= yield %>
-<p class="notice"><%= notice %></p>
+<div class="container-fluid">
+    <%= yield %>
+    <!-- ########################################################### lado direito -->
+  <div class="col-sm-3">
+  
+    <div class="alert alert-success" role="alert"><p id="notice"><%= notice %></p></div>
+    <!--    <h2>Side R</h2> -->
+  </div>
+  <!-- ^ ########################################################### /lado direito --> 
+</div>
 <p class="alert"><%= alert %></p>
 </body>
 </html>
