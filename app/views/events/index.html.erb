@@ -1,84 +1,59 @@
-
-<!-- ######################  carouseul component ########################  -->
-
-    <%= render file: "events/custom/_carouseul.html.erb" %>
-  <!--left ########################################################### -->
-  <div class="col-sm-3">
-    <!--    <h2>Side L</h2> -->
-  </div>
-  <!--/left ########################################################### -->
   <!--center ################################################################ -->
   <div class="col-sm-6"> 
-<!-- ************* coluna central ******************-->
+    <!-- ************* coluna central ******************-->
     <div class="row">
-<!-- 
-        ######################################################################
-        ################### formulário para criar evento #####################
-        ######################################################################
- -->
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseFormulário" aria-expanded="false" aria-controls="collapseFormulário">
-        + Criar evento
-      </a>
-      <div class="collapse" id="collapseFormulário">
-        <div class="well">
-              <%= render 'form' %>
+      <!-- evento listado na lista ########################################-->
+      <div class="row">
+        <% @events.each do |event| %>
+        <div class="col-xs-12">
+          <h2>
+            <%= link_to event.titulo, event %>
+            <!-- ########## icones dos eventos ############-->
+            <p class="pull-right">
+                <% @categorias =  Category.all%>
+                <% event.category_ids.each do |item| %>
+                    <a title="<%= @categorias[item-1].titulo %>" href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android" ><i class="<%= @categorias[item-1].icone %>"></i></a>   
+                <% end %>        
+            </p>
+            <!-- ########## ^ /icones dos eventos ^ ############-->
+          </h2>
+          <p>
+            <%= event.descricao %>
+            <%= link_to 'Leia mais.', event, class: 'btn btn-default btn-xs' %>
+         <!--    <a href="detalhes.html">
+              <button type="button" class="btn btn-default btn-xs">Leia mais.</button>
+            </a> -->
+          </p>
+        <div class="row">
+              <ul class="list-inline col-md-9">
+                  <li> 
+                      <a href="#">
+                          <i class="fa fa-calendar "></i> <i class="fa fa-clock-o"></i><%= event.data.strftime('%d-%m-%Y') %>
+                          <i class="fa fa-map-marker"></i> <%= event.endereco %>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-comments "></i><%=event.comments.count%> Comentários</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-wrench"></i><%= (link_to 'Editar', edit_event_path(event)) if current_user == event.creator %></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-trash-o"></i><%= (link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' }) if current_user == event.creator %></a>
+                  </li>
+              </ul>
+                <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary") do %>
+                 <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" >
+                    <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge"><%= event.eu_vou_rating %></span>
+                </button>
+                <%end%>
+          </div>
+          <hr>
         </div>
-      </div>
-    </div>
-<!--  ################## ^ /formulário para criar evento ^ ##################### -->
 
-<!-- evento listado na lista ########################################-->
-  <div class="row">
-    <% @events.each do |event| %>
-    <div class="col-xs-12">
-      <h2>
-        <%= link_to event.titulo, event %>
-        <!-- ########## icones dos eventos ############-->
-        <p class="pull-right">
-            <% @categorias =  Category.all%>
-            <% event.category_ids.each do |item| %>
-                <a title="<%= @categorias[item-1].titulo %>" href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android" ><i class="<%= @categorias[item-1].icone %>"></i></a>   
-            <% end %>        
-        </p>
-        <!-- ########## ^ /icones dos eventos ^ ############-->
-      </h2>
-      <p>
-        <%= event.descricao %>
-        <%= link_to 'Leia mais.', event, class: 'btn btn-default btn-xs' %>
-     <!--    <a href="detalhes.html">
-          <button type="button" class="btn btn-default btn-xs">Leia mais.</button>
-        </a> -->
-      </p>
-    <div class="row">
-          <ul class="list-inline col-md-9">
-              <li> 
-                  <a href="#">
-                      <i class="fa fa-calendar "></i> <i class="fa fa-clock-o"></i><%= event.data.strftime('%d-%m-%Y') %>
-                      <i class="fa fa-map-marker"></i> <%= event.endereco %>
-                  </a>
-              </li>
-              <li>
-                  <a href="#"><i class="fa fa-comments "></i><%=event.comments.count%> Comentários</a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-wrench"></i><%= (link_to 'Editar', edit_event_path(event)) if current_user == event.creator %></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-trash-o"></i><%= (link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' }) if current_user == event.creator %></a>
-              </li>
-          </ul>
-            <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary") do %>
-             <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" >
-                <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge"><%= event.eu_vou_rating %></span>
-            </button>
-            <%end%>
-      </div>
+        <% end %>
+      </div> <!-- /row -->
       <hr>
-    </div>
-
-    <% end %>
-  </div>
-    <hr>
   <!-- ^ /evento listado na lista ^ ########################################-->
-  </div> <!-- ************* ^ /coluna central ^ ****************** -->
+  </div> <!-- ************* ^ /col-sm-6 coluna central ^ ****************** -->
   
