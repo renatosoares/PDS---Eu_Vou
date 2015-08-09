@@ -28,18 +28,29 @@
 						<li><a href="#">Sobre</a></li>
 						<li><a href="#">Contato</a></li>
 						<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Action</a></li>
-												<li><a href="#">Another action</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Separated link</a></li>
-												<li class="divider"></li>
-												<li><a href="#">One more separated link</a></li>
-											</ul>
-										</li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ Criar evento <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li>
+										<form > 
+											teste1 <input type="text">
+											teste2 <input type="text">
+											teste2 <input type="text">
+											<button>enviar</button>
+										</form>
+									</li>
+								</ul>
+						</li>
 					</ul>
-	
 					<div class="col-sm-5 col-md-5">
 						<form class="navbar-form" role="search">
 							<div class="input-group">
@@ -66,20 +77,6 @@
 				 </div>
 				</div>
 		</nav>
-		<div class="row fixed-top" > <!-- criar evento -->
-			<div class="col-sm-3 col-md-3"></div>
-			<div class="col-sm-6 col-md-6 "> 
-		    <a class="btn btn-primary" data-toggle="collapse" href="#collapseFormulário" aria-expanded="false" aria-controls="collapseFormulário">
-		      + Criar evento
-		    </a>
-		    <div class="collapse" id="collapseFormulário">
-		      <div class="well">
-		            <%= render 'form' %>
-		      </div>
-		    </div>
-		  </div> 
-		  <div class="col-sm-3 col-md-3"></div>
-	  </div><!-- ^ /criar evento ^ -->
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
 <div class="container-fluid">
 	<!-- ######################  carouseul component ########################  -->

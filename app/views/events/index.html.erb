@@ -1,7 +1,18 @@
   <!--center ################################################################ -->
   <div class="col-sm-6"> 
+    
     <!-- ************* coluna central ******************-->
-    <div class="row">
+  
+      <div > <!-- criar evento -->
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseFormulário" aria-expanded="false" aria-controls="collapseFormulário">
+          + Criar evento
+        </a>
+        <div class="collapse" id="collapseFormulário">
+          <div class="well">
+                <%= render 'form' %>
+          </div>
+        </div>
+      </div> <!-- /criar evento -->
       <!-- evento listado na lista ########################################-->
       <div class="row">
         <% @events.each do |event| %>
