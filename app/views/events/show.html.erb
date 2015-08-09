@@ -35,9 +35,11 @@
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-envelope fa-fw"></i> Contato
                                 </a>
-                                <button class="btn btn-primary bnt-lg btn-block" type="button">
+                              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post") do %>
+                                <button class="btn btn-primary bnt-lg btn-block" type="submit">
                                     <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge"><%=@event.eu_vou_rating%></span>
                                 </button>
+                                  <%end%>
                             </div>
                             <!-- /.list-group -->
                             
