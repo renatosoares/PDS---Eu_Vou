@@ -9,11 +9,11 @@
                 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Italo Berg</a>
+                    by <a href="#"><%=@event.creator.nome %></a>
                 </p>
                 <hr>
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Postado 24 de jundo de 2015 às 18:00 horas</p>
+                <p><span class="glyphicon glyphicon-time"></span> Data do Evento <%=@event.data %></p>
                 <hr>
         <!-- imagem e detalhes rápidos do evento -->
         <div class="featurette row" id="services">
@@ -24,10 +24,10 @@
                         <div class="panel-body col-lg-4">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-calendar fa-fw"></i>  <%= @event.data %>
+                                    <i class="fa fa-calendar fa-fw"></i>  <%= @event.data.strftime('%d-%m-%Y') %>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-clock-o fa-fw"></i> 18 horas
+                                    <i class="fa fa-clock-o fa-fw"></i> <%= @event.data.strftime('%R') %>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-globe fa-fw"></i> <%= @event.endereco %>
@@ -35,9 +35,11 @@
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-envelope fa-fw"></i> Contato
                                 </a>
-                                <button class="btn btn-primary bnt-lg btn-block" type="button">
-                                    <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge">27</span>
+                              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post") do %>
+                                <button class="btn btn-primary bnt-lg btn-block" type="submit">
+                                    <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge"><%=@event.eu_vou_rating%></span>
                                 </button>
+                                  <%end%>
                             </div>
                             <!-- /.list-group -->
                             
@@ -59,54 +61,41 @@
                 <hr>
                 <!-- Blog Comments -->
                 <!-- Comments Form -->
+              <% if current_user %>
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
+                  <%= form_for(@comment) do |f| %>
+                    <h4>Deixe seu comentário:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                          <%= f.text_area :conteudo, class: "form-control", rows: "3" %>
+                            <!--<textarea class="form-control" rows="3"></textarea>-->
+                          <%= f.hidden_field :event_id, :value => @event.id  %>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <%= f.submit "Enviar", class: "btn btn-primary"  %>
+                        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
                     </form>
+                  <% end %>
                 </div>
+                  <%end%>
                 <hr>
                 <!-- Posted Comments -->
                 <!-- Comment -->
-                <div class="media">
+              <!-- Aqui foi Marcelo que incluiu -->
+              <%@event.comments.order(data: :desc).map do |c|%>
+                  <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
+                      <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      <h4 class="media-heading"><%=c.user.nome %>
+                        <small><%=c.data %></small>
+                      </h4>
+                      <%=c.conteudo %>
+                      <%= (link_to 'Apagar', c, method: :delete, data: { confirm: 'Are you sure?' }) if current_user == c.user %>
                     </div>
-                </div>
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" style="width: 64px; height: 64px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSzQkM_0mdTTBXxe_MlAK7zYsdZN0O8TIxWrernMIHenPqywY2EEGTryA" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media" >
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" style="width: 64px; height: 64px;" src="http://vignette3.wikia.nocookie.net/simpsons/images/3/39/Ralph_wiggum.gif/revision/latest/scale-to-width/553?cb=20120620154037&path-prefix=pt" alt="">
-                                </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
+                  </div>
+              <%end%>
+              <!--FIM da modificacao de Marcelo-->
             </div>
         </div>
         <!-- /.row -->
@@ -115,7 +104,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <%= link_to 'Edit', edit_event_path(@event) %> |
+                    <%= (link_to 'Edit', edit_event_path(@event)) if current_user == @event.creator %> |
                     <%= link_to 'Back', events_path %>
                     <p id="notice"><%= notice %></p>
                 </div>
