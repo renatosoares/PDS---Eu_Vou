@@ -31,6 +31,7 @@
 								<ul class="dropdown-menu">
 									<li style="width: 500px;">
       							<div class="well">
+      							<!-- gambiarra -->
       							  <%= 
       							  	if request.host+request.fullpath == request.host+"/" then
       							  		render 'form' 
@@ -70,6 +71,7 @@
 <!-- ################### ^ /menu suspenso ^ ###########################################-->
 <div class="container-fluid">
 	<!-- ######################  carouseul component ########################  -->
+	<!-- gambiarra -->
   <%= 
   	if request.host+request.fullpath == request.host+"/" then
   		render file: "events/custom/_carouseul.html.erb"
@@ -83,6 +85,7 @@
 		<%= yield %>
 		<!-- ########################################################### lado direito -->
 	<div class="col-sm-3">
+		<!-- gambiarra -->
 		<% if notice == true then%><!--  corrigir esse if -->
 			<div class="alert alert-success" role="alert"><p id="notice"><%= notice %></p></div>
 		<% end%>
