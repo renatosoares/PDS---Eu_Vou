@@ -1,115 +1,104 @@
-    <!-- Page Content -->
-    <div class="container containerDetalhes">
-        <div class="row">
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-                <!-- Blog Post -->
-                <!-- Title -->
-                <h1><%= @event.titulo %></h1>
-                
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#"><%=@event.creator.nome %></a>
-                </p>
-                <hr>
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Data do Evento <%=@event.data %></p>
-                <hr>
-        <!-- imagem e detalhes rápidos do evento -->
-        <div class="featurette row" id="services">
-            <div class="col-lg-8">
-                <img class="featurette-image img-responsive pull-left" src="<%= @event.imagem %>">
-            </div>
-                         <!-- info básicas do evento -->
-                        <div class="panel-body col-lg-4">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-calendar fa-fw"></i>  <%= @event.data.strftime('%d-%m-%Y') %>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-clock-o fa-fw"></i> <%= @event.data.strftime('%R') %>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-globe fa-fw"></i> <%= @event.endereco %>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Contato
-                                </a>
-                              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post") do %>
-                                <button class="btn btn-primary bnt-lg btn-block" type="submit">
-                                    <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge"><%=@event.eu_vou_rating%></span>
-                                </button>
-                                  <%end%>
-                            </div>
-                            <!-- /.list-group -->
-                            
-                        </div>
-                        <!-- /.panel-body -->
-                <!-- ################################################################## --> 
+<!-- Page Content -->
+<!--     <div class="container containerDetalhes"> -->
+<div class="col-sm-6">
+  <div class="row">
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-12">
+      <h1><%= @event.titulo %></h1>
+      <p class="lead">
+          by <a href="#"><%=@event.creator.nome %></a>
+      </p>
+      <hr>
+      <!-- Date/Time -->
+      <p><span class="glyphicon glyphicon-time"></span> Data do Evento <%=@event.data %></p>
+      <hr>
+      <!-- imagem e detalhes rápidos do evento -->
+      <div class="featurette row" id="services">
+        <div class="col-lg-8">
+          <img class="featurette-image img-responsive pull-left" src="<%= @event.imagem %>">
         </div>
-                <hr>
-                <div class="row">
-                <!-- ########## icones dos eventos ############-->
-                    <% @categoriasDetalhes =  Category.all%>
-                        <% @event.category_ids.each do |item| %>
-                        <a title="<%= @categoriasDetalhes[item-1].titulo %>" href="#" class="btn azm-social azm-size-48 azm-r-square azm-android"><i class="<%= @categoriasDetalhes[item-1].icone %>"></i></a> 
-                    <% end %>        
-                <!-- ########## ^ /icones dos eventos ^ ############-->
-                </div>
-                <!-- Post Content -->
-                <p class="lead"><%= @event.descricao %></p>
-                <hr>
-                <!-- Blog Comments -->
-                <!-- Comments Form -->
-              <% if current_user %>
-                <div class="well">
-                  <%= form_for(@comment) do |f| %>
-                    <h4>Deixe seu comentário:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                          <%= f.text_area :conteudo, class: "form-control", rows: "3" %>
-                            <!--<textarea class="form-control" rows="3"></textarea>-->
-                          <%= f.hidden_field :event_id, :value => @event.id  %>
-                        </div>
-                        <%= f.submit "Enviar", class: "btn btn-primary"  %>
-                        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-                    </form>
-                  <% end %>
-                </div>
-                  <%end%>
-                <hr>
-                <!-- Posted Comments -->
-                <!-- Comment -->
-              <!-- Aqui foi Marcelo que incluiu -->
-              <%@event.comments.order(data: :desc).map do |c|%>
-                  <div class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
-                    </a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><%=c.user.nome %>
-                        <small><%=c.data %></small>
-                      </h4>
-                      <%=c.conteudo %>
-                      <%= (link_to 'Apagar', c, method: :delete, data: { confirm: 'Are you sure?' }) if current_user == c.user %>
-                    </div>
-                  </div>
+          <!-- info básicas do evento -->
+          <div class="panel-body col-lg-4">
+            <div class="list-group">
+              <a href="#" class="list-group-item">
+                  <i class="fa fa-calendar fa-fw"></i>  <%= @event.data.strftime('%d-%m-%Y') %>
+              </a>
+              <a href="#" class="list-group-item">
+                  <i class="fa fa-clock-o fa-fw"></i> <%= @event.data.strftime('%R') %>
+              </a>
+              <a href="#" class="list-group-item">
+                  <i class="fa fa-globe fa-fw"></i> <%= @event.endereco %>
+              </a>
+              <a href="#" class="list-group-item">
+                  <i class="fa fa-envelope fa-fw"></i> Contato
+              </a>
+              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post") do %>
+                <button class="btn btn-primary bnt-lg btn-block" type="submit">
+                  <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge"><%=@event.eu_vou_rating%></span>
+                </button>
               <%end%>
-              <!--FIM da modificacao de Marcelo-->
-            </div>
-        </div>
-        <!-- /.row -->
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <%= (link_to 'Edit', edit_event_path(@event)) if current_user == @event.creator %> |
-                    <%= link_to 'Back', events_path %>
-                    <p id="notice"><%= notice %></p>
+            </div><!-- /.list-group -->
+          </div>
+      </div>
+      <!-- ################################################################## --> 
+      <hr>
+      <div class="row">
+        <!-- ########## icones dos eventos ############-->
+        <% @categoriasDetalhes =  Category.all%>
+          <% @event.category_ids.each do |item| %>
+          <a title="<%= @categoriasDetalhes[item-1].titulo %>" href="#" class="btn azm-social azm-size-48 azm-r-square azm-android"><i class="<%= @categoriasDetalhes[item-1].icone %>"></i></a> 
+        <% end %>        
+        <!-- ########## ^ /icones dos eventos ^ ############-->
+      </div>
+        <!-- Post Content -->
+      <p class="lead"><%= @event.descricao %></p>
+      <hr>
+      <!-- Blog Comments -->
+      <!-- Comments Form -->
+      <% if current_user %>
+        <div class="well">
+          <%= form_for(@comment) do |f| %>
+            <h4>Deixe seu comentário:</h4>
+            <form role="form">
+                <div class="form-group">
+                  <%= f.text_area :conteudo, class: "form-control", rows: "3" %>
+                    <!--<textarea class="form-control" rows="3"></textarea>-->
+                  <%= f.hidden_field :event_id, :value => @event.id  %>
                 </div>
+                <%= f.submit "Enviar", class: "btn btn-primary"  %>
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            </form>
+          <% end %>
+        </div>
+      <%end%>
+      <hr>
+      <!-- Posted Comments -->
+      <!-- Comment -->
+      <%@event.comments.order(data: :desc).map do |c|%>
+          <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><%=c.user.nome %>
+                <small><%=c.data %></small>
+              </h4>
+              <%=c.conteudo %>
+              <%= (link_to 'Apagar', c, method: :delete, data: { confirm: 'Are you sure?' }) if current_user == c.user %>
             </div>
-            <!-- /.row -->
-        </footer>
+          </div>
+      <%end%>
     </div>
-    <!-- /.container -->
+  </div><!-- /.row -->
+  <hr>
+  <!-- Footer -->
+  <footer>
+      <div class="row">
+          <div class="col-lg-12">
+              <%= (link_to 'Edit', edit_event_path(@event)) if current_user == @event.creator %> |
+              <%= link_to 'Back', events_path %>
+          </div>
+      </div><!-- /.row -->
+  </footer>
+</div>
+<!--     </div> --> <!-- /.container -->

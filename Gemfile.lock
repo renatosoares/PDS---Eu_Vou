@@ -96,7 +96,6 @@ GEM
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
-    pg (0.18.2)
     rack (1.6.2)
     rack-protection (1.5.3)
       rack
@@ -191,11 +190,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mailcatcher
-  pg
   rails (= 4.2.1)
   sass-rails (~> 5.0)
-  sqlite3
   sdoc (~> 0.4.0)
+  sqlite3
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
