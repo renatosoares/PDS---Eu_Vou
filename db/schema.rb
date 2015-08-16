@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816103143) do
+ActiveRecord::Schema.define(version: 20150816115904) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "titulo"
@@ -44,11 +44,14 @@ ActiveRecord::Schema.define(version: 20150816103143) do
     t.text     "descricao"
     t.string   "endereco"
     t.datetime "data"
-    t.string   "imagem"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "creator_id"
-    t.integer  "eu_vou_rating", default: 0
+    t.integer  "eu_vou_rating",       default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "events", ["creator_id"], name: "index_events_on_creator_id"

@@ -9,13 +9,11 @@
           by <a href="#"><%=@event.creator.nome %></a>
       </p>
       <hr>
-      <!-- Date/Time -->
-      <p><span class="glyphicon glyphicon-time"></span> Data do Evento <%=@event.data %></p>
-      <hr>
       <!-- imagem e detalhes rápidos do evento -->
       <div class="featurette row" id="services">
         <div class="col-lg-8">
-          <img class="featurette-image img-responsive pull-left" src="<%= @event.imagem %>">
+          <!--<img class="featurette-image img-responsive pull-left" src=""-->
+          <%= image_tag @event.avatar.url(:large), class: "featurette-image img-responsive pull-left"  %>
         </div>
           <!-- info básicas do evento -->
           <div class="panel-body col-lg-4">
