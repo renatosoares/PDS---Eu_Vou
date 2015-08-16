@@ -48,3 +48,6 @@ gem 'devise'
 
 #email
 gem 'mailcatcher'
+
+#Paperclip infraestrutura para anexar imagens aos projeto.
+gem 'paperclip', '~> 4.3'

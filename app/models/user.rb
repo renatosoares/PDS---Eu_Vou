@@ -7,8 +7,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :events
   has_many :events_created, foreign_key: "creator_id", class_name: 'Event'
   has_many :comments
+  has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "64x64>" }
+
   scope :admins, -> { where(admin: true) }
   validates_presence_of :nome
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 
   def my_level
