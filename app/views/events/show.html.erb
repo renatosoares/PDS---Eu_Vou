@@ -77,7 +77,8 @@
       <%@event.comments.order(data: :desc).map do |c|%>
           <div class="media">
             <a class="pull-left" href="#">
-              <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
+              <%= image_tag  c.user.avatar.url(:thumb) if c.user.avatar.url.present? %><br><br>
+              <!--<img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">-->
             </a>
             <div class="media-body">
               <h4 class="media-heading"><%=c.user.nome %>
