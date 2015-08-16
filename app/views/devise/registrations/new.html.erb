@@ -47,7 +47,7 @@
                                 <div class="textbox-wrap">
                                     <div class="input-group">
                                         <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-                                        <%= f.text_field :foto, class: "form-control", placeholder: "Foto", required: "required" %>
+                                        <%= f.file_field :avatar, class: "form-control", placeholder: "Foto", required: "required", accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
                                         <!-- <input type="text" class="form-control " placeholder="UserName" required="required" /> -->
                                     </div>
                                 </div>

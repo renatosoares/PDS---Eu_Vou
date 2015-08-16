@@ -10,7 +10,8 @@
             </div>
             <!-- Slides Container -->
             <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; height: 300px; overflow: hidden;">
-                <div>
+              <% Event.ativos.order(eu_vou_rating: :desc).first(3).each do |event| %>
+                <!--<div>
                     <img u="image" src2="/assets/1920/red.jpg" />
                 </div>
                 <div>
@@ -18,7 +19,11 @@
                 </div>
                 <div>
                     <img u="image" src2="/assets/1920/blue.jpg" />
-                </div>
+                </div>-->
+                  <div>
+                    <%= link_to image_tag(event.avatar.url(:large)), event %>
+                  </div>
+              <%end%>
             </div>
             <style>
                 /* jssor slider bullet navigator skin 21 css */
