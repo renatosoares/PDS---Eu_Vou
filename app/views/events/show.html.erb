@@ -56,7 +56,7 @@
       <!-- Comments Form -->
       <% if current_user %>
         <div class="well">
-          <%= form_for(@comment) do |f| %>
+          <%= form_for(@comment, remote: true) do |f| %>
             <h4>Deixe seu comentário:</h4>
             <form role="form">
                 <div class="form-group">
@@ -73,21 +73,9 @@
       <hr>
       <!-- Posted Comments -->
       <!-- Comment -->
-      <%@event.comments.order(data: :desc).map do |c|%>
-          <div class="media">
-            <a class="pull-left" href="#">
-              <%= image_tag  c.user.avatar.url(:thumb) if c.user.avatar.url.present? %><br><br>
-              <!--<img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">-->
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading"><%=c.user.nome %>
-                <small><%=c.data %></small>
-              </h4>
-              <%=c.conteudo %>
-              <%= (link_to 'Apagar', c, method: :delete, data: { confirm: 'Are you sure?' }) if current_user == c.user %>
-            </div>
-          </div>
-      <%end%>
+      <div id="comentarios">
+        <%= render 'comentario', event: @event%>
+      </div>
     </div>
   </div><!-- /.row -->
   <hr>
