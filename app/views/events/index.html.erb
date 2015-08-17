@@ -41,12 +41,15 @@
                     <a href="#"><i class="fa fa-trash-o"></i><%= (link_to 'Deletar', event, method: :delete, data: { confirm: 'Você tem certeza?' }) if current_user == event.creator %></a>
                   </li>
               </ul>
-                <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary") do %>
-                 <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" >
-                    <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge"><%= event.eu_vou_rating %></span>
+                <%=form_tag(euvou_confirmation_path(id: event.id), method: "post", class: "pull-right col-md-3 btn btn-primary", remote: true) do %>
+                 <button  type="submit" style="background: none; border: none; width:100%; height: 37px;" <%= "disabled" unless current_user %>>
+                    <span class="h4"><i class="fa fa-check-square-o icone-evento-indexlist"></i></span>&nbsp; &nbsp; EU VOU! &nbsp; &nbsp;<span class="badge" id="contador-<%=event.id %>"><%= event.eu_vou_rating %></span>
                 </button>
+              <div id="resposta-<%= event.id%>" ></div>
                 <%end%>
           </div>
           <hr>
   <!-- ^ /evento listado na lista ^ ########################################-->
   </div> <!-- ************* ^ /col-sm-6 coluna central ^ ****************** -->
+<%end%>
+          </div></div>

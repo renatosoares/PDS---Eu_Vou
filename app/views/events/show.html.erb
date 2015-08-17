@@ -9,13 +9,11 @@
           by <a href="#"><%=@event.creator.nome %></a>
       </p>
       <hr>
-      <!-- Date/Time -->
-      <p><span class="glyphicon glyphicon-time"></span> Data do Evento <%=@event.data %></p>
-      <hr>
       <!-- imagem e detalhes rápidos do evento -->
       <div class="featurette row" id="services">
         <div class="col-lg-8">
-          <img class="featurette-image img-responsive pull-left" src="<%= @event.imagem %>">
+          <!--<img class="featurette-image img-responsive pull-left" src=""-->
+          <%= image_tag @event.avatar.url(:large), class: "featurette-image img-responsive pull-left"  %>
         </div>
           <!-- info básicas do evento -->
           <div class="panel-body col-lg-4">
@@ -32,9 +30,10 @@
               <a href="#" class="list-group-item">
                   <i class="fa fa-envelope fa-fw"></i> Contato
               </a>
-              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post") do %>
+              <%=form_tag(euvou_confirmation_path(id: @event.id), method: "post", remote: true) do %>
                 <button class="btn btn-primary bnt-lg btn-block" type="submit">
-                  <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge"><%=@event.eu_vou_rating%></span>
+                  <i class="fa fa-check-square-o"></i> Eu vou! <span class="badge" id="contador-<%=@event.id %>"><%=@event.eu_vou_rating%></span>
+                  <div id="resposta-<%=@event.id %>" class="resposta"></div>
                 </button>
               <%end%>
             </div><!-- /.list-group -->
@@ -57,7 +56,7 @@
       <!-- Comments Form -->
       <% if current_user %>
         <div class="well">
-          <%= form_for(@comment) do |f| %>
+          <%= form_for(@comment, remote: true) do |f| %>
             <h4>Deixe seu comentário:</h4>
             <form role="form">
                 <div class="form-group">
@@ -74,20 +73,9 @@
       <hr>
       <!-- Posted Comments -->
       <!-- Comment -->
-      <%@event.comments.order(data: :desc).map do |c|%>
-          <div class="media">
-            <a class="pull-left" href="#">
-              <img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading"><%=c.user.nome %>
-                <small><%=c.data %></small>
-              </h4>
-              <%=c.conteudo %>
-              <%= (link_to 'Apagar', c, method: :delete, data: { confirm: 'Are you sure?' }) if current_user == c.user %>
-            </div>
-          </div>
-      <%end%>
+      <div id="comentarios">
+        <%= render 'comentario', event: @event%>
+      </div>
     </div>
   </div><!-- /.row -->
   <hr>

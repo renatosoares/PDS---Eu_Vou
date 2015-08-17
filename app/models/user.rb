@@ -4,12 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
+
   has_and_belongs_to_many :events
   has_many :events_created, foreign_key: "creator_id", class_name: 'Event'
   has_many :comments
-  scope :admins, -> { where(admin: true) }
-  validates_presence_of :nome
+  has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "64x64>" }, :default_url => "missing.png"
 
+
+  validates_presence_of :nome
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_size :avatar, :less_than => 1.megabytes
+
+  scope :admins, -> { where(admin: true) }
 
   def my_level
     if (0..100).include?(self.pontuacao)
