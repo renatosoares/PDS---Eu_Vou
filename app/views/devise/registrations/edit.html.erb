@@ -14,9 +14,14 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="field">
+    <div class="field">
       <%= f.label :nome %><br />
       <%= f.text_field :nome %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :pontuacao %><br />
+      <%= f.text_field :pontuacao, disabled: true %>
     </div>
 
     <div class="field">

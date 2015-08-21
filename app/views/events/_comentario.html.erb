@@ -2,6 +2,8 @@
     <div class="media" >
       <a class="pull-left" href="#">
         <%= image_tag  c.user.avatar.url(:thumb) if c.user.avatar.url.present? %><br><br>
+     <p>   <%= c.user.legendaIcone %> </p>
+        <i class="<%= c.user.tipoIcone %>"></i>
         <!--<img class="media-object" style="width: 64px; height: 64px;" src="http://u.sera.to/users/84/73584/avatar_mid_1345805197.png" alt="">-->
       </a>
       <div class="media-body">
@@ -13,3 +15,5 @@
       </div>
     </div>
 <%end%>
+
+

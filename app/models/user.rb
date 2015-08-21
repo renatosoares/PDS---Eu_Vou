@@ -17,15 +17,19 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where(admin: true) }
 
-  def my_level
+  def my_level      # gambiarras, depois tu melhora Marcelo ;)
     if (0..100).include?(self.pontuacao)
-      'Saidinho'
+      @legendaIcone = 'Saidinho'            # <i class="fa fa-hand-peace-o"></i>
+      @tipoIcone = 'fa fa-hand-peace-o'
     elsif (101..300).include?(self.pontuacao)
-      'Baladeiro'
+      @legendaIcone = 'Baladeiro'           # <i class="fa fa-bullhorn"></i>
+      @tipoIcone = 'fa fa-bullhorn'
     elsif (301..900).include?(self.pontuacao)
-      'Baladeiro Supremo'
+      @legendaIcone = 'Baladeiro Supremo'   # <i class="fa fa-rocket"></i>
+      @tipoIcone = 'fa fa-rocket'
     else
-      'Rei do Camarote'
+       @legendaIcone = 'Rei do Camarote'     # <i class="fa fa-diamond"></i>
+      @tipoIcone = 'fa fa-diamond'
     end
   end
 
