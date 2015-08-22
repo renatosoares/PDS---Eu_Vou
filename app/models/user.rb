@@ -19,17 +19,16 @@ class User < ActiveRecord::Base
 
   def my_level      # gambiarras, depois tu melhora Marcelo ;)
     if (0..100).include?(self.pontuacao)
-      @legendaIcone = 'Saidinho'            # <i class="fa fa-hand-peace-o"></i>
-      @tipoIcone = 'fa fa-hand-peace-o'
+      ['Saidinho', 'fa fa-hand-peace-o']            # <i class="fa fa-hand-peace-o"></i>
     elsif (101..300).include?(self.pontuacao)
-      @legendaIcone = 'Baladeiro'           # <i class="fa fa-bullhorn"></i>
-      @tipoIcone = 'fa fa-bullhorn'
+      ['Baladeiro', 'fa fa-bullhorn']           # <i class="fa fa-bullhorn"></i>
+      
     elsif (301..900).include?(self.pontuacao)
-      @legendaIcone = 'Baladeiro Supremo'   # <i class="fa fa-rocket"></i>
-      @tipoIcone = 'fa fa-rocket'
+      ['Baladeiro Supremo', 'fa fa-rocket']   # <i class="fa fa-rocket"></i>
+       
     else
-       @legendaIcone = 'Rei do Camarote'     # <i class="fa fa-diamond"></i>
-      @tipoIcone = 'fa fa-diamond'
+      ['Rei do Camarote', 'fa fa-diamond']     # <i class="fa fa-diamond"></i>
+       
     end
   end
 

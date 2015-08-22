@@ -1,3 +1,33 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.avatarComentario{
+	a { 
+		p.avatarComentarioImg {
+			img{
+				width: 64px;
+				height: 64px;
+			}			
+		}
+		p.avatarComentarioBandeira{
+			i{
+					margin-top: -43px;
+					margin-right: -16px;
+			}	
+		}
+		p.avatarComentarBadge{
+			i{
+				margin-top: -43px;
+				margin-right: -6px;
+				color: #fff;
+			}
+		}		
+	}
+	div{
+		h4{
+			span{
+				color: #107CA7;
+			}
+		}
+	}
+}
