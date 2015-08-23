@@ -1,83 +1,16 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-    <div class="field">
-      Foto:<br />
-      <%= image_tag @user.avatar.url(:medium) if @user.avatar.url.present? %><br><br>
-      <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
-    </div>
-
-    <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-    <div class="field">
-      <%= f.label :nome %><br />
-      <%= f.text_field :nome %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :pontuacao %><br />
-      <%= f.text_field :pontuacao, disabled: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :sexo %><br />
-      <%= f.text_field :sexo %>
-    </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-
-
-<div class="container">
+<div class="col-sm-12">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title"><%= f.label :nome %> <%= f.text_field :nome %> </h3>
+            <h3 class="panel-title">Edit <%= resource_name.to_s.humanize %></h3>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-3 col-lg-3 " align="center">
-
-               
-                  <%= image_tag @user.avatar.url(:medium), class: "img-thumbnail" if @user.avatar.url.present? %>
-           
-             
-                
+                <%= image_tag @user.avatar.url(:medium), class: "img-thumbnail" if @user.avatar.url.present? %>
                 <div class="input-group image-preview">
                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                     <span class="input-group-btn">
@@ -90,7 +23,6 @@
                             <span class="glyphicon glyphicon-folder-open"></span>
                             <span class="image-preview-input-title">Foto</span>
                             <input accept="image/png,image/gif,image/jpeg,image/jpg" name="user[avatar]" id="user_avatar" type="file"> <!-- rename it -->
-                            
                         </div>
                     </span>
                 </div><!-- /input-group image-preview [TO HERE]--> 
@@ -98,33 +30,37 @@
 
               <div class=" col-md-9 col-lg-9 "> 
                 <table class="table table-user-information">
-                  <tbody>
+                  <tbody class="form-group">
+                    <tr>
+                      <td class="col-sm-6" > <%= f.label :nome %></td>
+                      <td><%= f.text_field :nome, class: "form-control" %></td>
+                    </tr>
                     <tr>
                       <td><%= f.label :pontuacao %></td>
-                      <td><%= f.text_field :pontuacao, disabled: true %></td>
+                      <td><%= f.text_field :pontuacao, disabled: true, class: "form-control" %></td>
                     </tr>
                     <tr>
                       <td><%= f.label :email  %></td>
-                      <td><%= f.email_field :email, autofocus: true, class: "form-control"%></td>
+                      <td ><%= f.email_field :email, autofocus: true, class: "form-control"%></td>
                     </tr>
                     <tr>
                       <td> <%= f.label :sexo %></td>
-                      <td><%= f.text_field :sexo %></td>
+                      <td><%= f.text_field :sexo, class: "form-control" %></td>
                     </tr>
                     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
                     <% end %>
                     <tr>
                       <td> <%= f.label :password %> <i>(leave blank if you don't want to change it)</i></td>
-                      <td><%= f.password_field :password, autocomplete: "off" %></td>
+                      <td><%= f.password_field :password, autocomplete: "off", class: "form-control" %></td>
                     </tr>
                     <tr>
                       <td><%= f.label :password_confirmation %></td>
-                      <td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+                      <td><%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %></td>
                     </tr>
                     <tr>
                       <td><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></td>
-                      <td> <%= f.password_field :current_password, autocomplete: "off" %></td>
+                      <td> <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %></td>
                     </tr>
                   </tbody>
                 </table>
@@ -136,14 +72,8 @@
           <div class="panel-footer">
             <div data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-default"><i class="fa fa-reply-all text-primary"></i>&nbsp;<%= link_to "Back", :back %></div>
             <span class="pull-right">
-                <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-              
-               <form  method="post" action="/users">
-                <input name="_method" value="delete" type="hidden">
-                  <i class="glyphicon glyphicon-remove"></i>
-                  <input data-confirm="Are you sure?" value="Cancel" type="submit" class="btn btn-sm btn-danger">
-                  <input name="authenticity_token" value="+5jx1g+O3E6yNStUbEKJQM0eMQfbz13GzXgWjLXuULfFm+2uFefiWeSymNWlS7KRWzqv69XOsGDuTzjgTdqJJA==" type="hidden">
-               </form>
+                <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning pull-left"><i class="glyphicon glyphicon-edit"></i></a>
+                <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-sm btn-danger pull-right" %> 
             </span>
           </div>
           
