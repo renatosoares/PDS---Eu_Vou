@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :events
   has_many :events_created, foreign_key: "creator_id", class_name: 'Event'
   has_many :comments
-  has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "64x64>" }, :default_url => "missing.png"
+  has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "64x64>" }, :default_url => "missing.png" 
 
 
   validates_presence_of :nome
