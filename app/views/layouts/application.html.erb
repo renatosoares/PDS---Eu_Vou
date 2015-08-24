@@ -78,18 +78,18 @@
   	end
   %>
   <!--left ########################################################### -->
-  <div class="col-sm-3">
-    <!-- <h2>Side L</h2> -->
+  <div class="col-sm-3" style="background-color: red; min-height: 1300px; ">
+    <!-- <h2>Side L</h2> -->&nbsp;
   </div>
   <!--/left ########################################################### -->
 		<%= yield %>
 		<!-- ########################################################### lado direito -->
-	<div class="col-sm-3">
+	<div class="col-sm-3" style="background-color: red; min-height: 1300px;">
 		<!-- gambiarra -->
 		<% if notice == true then%><!--  corrigir esse if -->
 			<div class="alert alert-success" role="alert"><p id="notice"><%= notice %></p></div>
 		<% end%>
-		<!--    <h2>Side R</h2> -->
+		<!--    <h2>Side R</h2> --> &nbsp;
 	</div>
 	<!-- ^ ########################################################### /lado direito --> 
 </div>

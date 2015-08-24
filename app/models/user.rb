@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   def my_level      # gambiarras, depois tu melhora Marcelo ;)
     if (0..100).include?(self.pontuacao)
-      ['Saidinho', 'fa fa-hand-peace-o']            # <i class="fa fa-hand-peace-o"></i>
+      ['Saidinho', 'fa fa-rocket']            # <i class="fa fa-hand-peace-o"></i>
     elsif (101..300).include?(self.pontuacao)
       ['Baladeiro', 'fa fa-bullhorn']           # <i class="fa fa-bullhorn"></i>
       

@@ -1,15 +1,15 @@
 
-<div class="row">
+
+<div class="col-sm-6">
+<div >
 
     <button type="button" class="close col-sm-12" data-dismiss="alert" aria-label="Close">
       <%= devise_error_messages! %>
     </button>
 </div>
 
-<div class="col-sm-12">
-
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+    <div class="col-xs-12 col-sm-12 toppad" >
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         
         <div class="panel panel-info">
@@ -18,7 +18,7 @@
           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-3 col-lg-3 " align="center">
+              <div class="col-md-3 col-lg-3 avatar-badge-file" align="center">
                 <%= image_tag @user.avatar.url(:medium), class: "img-thumbnail" if @user.avatar.url.present? %>
                 <div class="input-group image-preview">
                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -34,7 +34,10 @@
                             <input accept="image/png,image/gif,image/jpeg,image/jpg" name="user[avatar]" id="user_avatar" type="file"> <!-- rename it -->
                         </div>
                     </span>
+
                 </div><!-- /input-group image-preview [TO HERE]--> 
+                <p class="avatar-badge-file-base"><i class="fa fa-certificate fa-5x text-primary"></i></p>
+                <p class="avatar-badge-file-icon"><i class=" <%= @user.my_level[1] %> fa-3x"></i></p>
               </div>
 
               <div class=" col-md-9 col-lg-9 "> 
