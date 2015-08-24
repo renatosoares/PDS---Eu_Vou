@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>  
+	<title>Eu Vou!</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!-- ################### menu suspenso ###########################################-->
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="row">
+				 <div class="navbar-header ">
+								<a class="navbar-brand" rel="home" href="/"><i class="fa fa-check-square-o text-muted"></i> &nbsp;Eu Vou!</a>
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+								</button>
+				 </div>
+				 <div class="collapse navbar-collapse ">
+					<ul class="nav navbar-nav col-sm-5 col-md-5">
+						<li><a href="#">Sobre</a></li>
+						<li><a href="#">Contato</a></li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ Criar evento <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li style="width: 500px;">
+      							<div class="well">
+      							<!-- gambiarra -->
+      							  <%= 
+      							  	if request.host+request.fullpath == request.host+"/" then
+      							  		render 'form' 
+      							  	end	
+      							  %>	
+      							</div>
+									</li>
+								</ul>
+						</li>
+					</ul>
+					<div class="col-sm-3 col-md-3">
+						<form class="navbar-form" role="search">
+							<div class="input-group col-sm-12 col-md-12">
+									<input type="text" class="form-control " placeholder="Busca" name="srch-term" id="srch-term">
+									<div class="input-group-btn">
+											<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+									</div>
+							</div>
+						</form>
+					</div>
+					<div class=" col-sm-2 col-md-2 pull-right">
+							<% unless user_signed_in? %>
+									<h4><i class="fa fa-user text-primary"></i> <%= link_to "Sign_in", user_session_path %></h4>
+							<%end%>
+							<% if user_signed_in? %>
+									<p>
+										Olá,
+										<%= link_to current_user.nome, edit_user_registration_path %> - 
+										<%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %>
+									</p>
+							<% end %>
+
+					</div>
+				 </div>
+				</div><!--  	/row -->
+		</nav>
+<!-- ################### ^ /menu suspenso ^ ###########################################-->
+<div class="container-fluid">
+	<!-- ######################  carouseul component ########################  -->
+	<!-- gambiarra -->
+  <%= 
+  	if request.host+request.fullpath == request.host+"/" then
+  		render file: "events/custom/_carouseul.html.erb"
+  	end
+  %>
+  <!--left ########################################################### -->
+  <div class="col-sm-3">
+    <!-- <h2>Side L</h2> -->
+  </div>
+  <!--/left ########################################################### -->
+		<%= yield %>
+		<!-- ########################################################### lado direito -->
+	<div class="col-sm-3">
+		<!-- gambiarra -->
+		<% if notice == true then%><!--  corrigir esse if -->
+			<div class="alert alert-success" role="alert"><p id="notice"><%= notice %></p></div>
+		<% end%>
+		<!--    <h2>Side R</h2> -->
+	</div>
+	<!-- ^ ########################################################### /lado direito --> 
+</div>
+<p class="alert"><%= alert %></p>
+</body>
+</html>

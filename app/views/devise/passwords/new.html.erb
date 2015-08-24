@@ -1,0 +1,47 @@
+<div class="eternity-form">
+<!-- menu lateral ################################################################################## -->
+     <%= render file: "devise/custom/_menu_lateral.html.erb" %>
+<!-- /menu lateral ################################################################################## -->
+    <section id="demo3" class="colorBg3 colorBg"  data-panel="third">
+        <div class=" container">
+            <div class="forgot-password-section" data-animation="bounceInLeft">
+                <div class="section-title">
+                    <h3>Recuperar Senha</h3>
+                </div>
+                <div class="forgot-content">
+                	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  					<%= devise_error_messages! %>
+                    <!-- <form > -->
+                    <!--
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                
+                                <input type="text" class="form-control " placeholder="Username" required="required" />
+                            </div>
+                        </div> -->
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
+                                <!-- <input type="email" class="form-control " placeholder="Email Id" required="required" /> -->
+                                <!-- # <%= f.label :email %><br />--> 
+    							<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: "required" %>
+                            </div>
+                        </div>
+                        <div class="forget-form-action clearfix">
+                            <a class="btn btn-success pull-left blue-btn" href="#demo1"><i class="icon-chevron-left"></i>&nbsp;&nbsp; Voltar </a>
+                            <button type="submit" class="btn btn-success pull-right green-btn"><%= f.submit "Envie-me instruções", class: "btn  pull-right green-btn"%> &nbsp;&nbsp; <i class="icon-chevron-right"></i></button>
+                        </div>
+                    <!-- </form> -->
+                    <% end %>
+                </div>
+                <div class="login-form-links link1 " data-animation="fadeInLeftBig" data-animation-delay=".2s">
+                    <%= render "devise/shared/links" %>
+                    <%= render file: "devise/custom/_scripts.html.erb" %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

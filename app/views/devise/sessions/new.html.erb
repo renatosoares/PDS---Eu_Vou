@@ -1,0 +1,64 @@
+<div class="eternity-form">
+<!-- menu lateral ################################################################################## -->
+     <%= render file: "devise/custom/_menu_lateral.html.erb" %>
+<!-- /menu lateral ################################################################################## -->
+    <section class="colorBg1 colorBg" id="demo1" data-panel="first">
+        <div class=" container">
+            <div class="login-form-section">
+                <div class="login-content " data-animation="bounceIn">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>       
+                        <div class="section-title">
+                            <h3>Entre na sua conta</h3>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "email", required: "required" %>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "password", required: "required" %>
+                            </div>
+                        </div>
+                        <div class="login-form-action clearfix">
+                            <div class="checkbox pull-left">
+                                <div class="custom-checkbox">
+                                    <% if devise_mapping.rememberable? -%>
+                                        <div class="field">
+                                            <%= f.check_box :remember_me, checked: "checked", name: "iCheck", class: "checkbox-text pull-left"%>
+                                            <%= f.label :remember_me %>
+                                        </div>
+                                    <% end -%>
+                            
+                                </div>
+                            </div>
+                           <button class="btn btn-success pull-right green-btn"> <%= f.submit "Log in", class: "btn btn-success pull-right green-btn" %> &nbsp;<i class="icon-chevron-right pull-right"></i>  </button>                      
+                        </div>
+                    <% end %>
+                </div>
+                <div class="login-form-links link1 " data-animation="fadeInLeftBig" data-animation-delay=".2s">
+                    <%= render "devise/shared/links" %>
+                    <%= render file: "devise/custom/_scripts.html.erb" %>
+                </div>
+                 <div class="login-form-links link2 " data-animation="fadeInRightBig" data-animation-delay=".4s">
+                 &nbsp;
+                   <!-- <h4 class="green">Forget your Password?</h4>
+                    <span>Dont worry</span>
+                    <a href="#demo3" class="green">Click Here</a>
+                    <span>to Get New One</span>-->
+                </div> 
+            </div>
+        </div>
+    </section>
+<!-- 
+    <script src="/assets/jquery-1.9.1.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/respond.src.js"></script>
+    <script src="/assets/jquery.icheck.js"></script>
+    <script src="/assets/placeholders.min.js"></script>
+    <script src="/assets/waypoints.min.js"></script>
+    <script src="/assets/jquery.panelSnap.js"></script>
+ -->
+</div>

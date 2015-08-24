@@ -1,0 +1,4 @@
+$("#contador-<%=@event.id%>").html("<%= @event.eu_vou_rating %>");
+$("#resposta-<%=@event.id%>").html("<%= flash[:notice] %>");
+$("#resposta-<%=@event.id%>").fadeIn(2000);
+$("#resposta-<%=@event.id%>").fadeOut(3000);
