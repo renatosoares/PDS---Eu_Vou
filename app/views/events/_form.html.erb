@@ -24,7 +24,6 @@
       <%= f.text_area :descricao, :class => "form-control" %>
     </div>
   </div>
-  
   <div class="form-group">
     <%= f.label :endereco, :class => "control-label col-sm-2" %>
     <div class="col-sm-10">
@@ -37,24 +36,40 @@
       <%= f.datetime_select :data, :class => "form-control" %>
     </div>
   </div>
-
 <!-- ###################### -->
               <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                   Adicionar mais info
               </button>
-
               <div class="collapse" id="collapseExample">
                   <div class="well">
-                      <div class="form-group">
-                        <div class="control-label col-sm-2">Foto: </div>
-
-                          <div class="col-sm-10">
-                            <%= f.file_field :avatar, class: "form-control", accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
-                          </div>
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                              <div class="input-group image-preview">
+                                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                <span class="input-group-btn">
+                                    <!-- image-preview-clear button -->
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <span class="glyphicon glyphicon-remove"></span> Clear
+                                    </button>
+                                    <!-- image-preview-input -->
+                                    <div class="btn btn-default image-preview-input">
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                        <span class="image-preview-input-title">Foto</span>
+                                        <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg' %><!-- rename it -->
+                                    </div>
+                                </span>
+                            </div><!-- /input-group image-preview [TO HERE]--> 
+                        </div>
                       </div>
-                    <div class="form-group">
-                      <%=f.collection_check_boxes(:category_ids, Category.all, :id, :titulo) %>
-                    </div>            
+                      <!-- issueRenato -> retornar nome referente a figura -->
+                      <div class="form-group collection_check_boxes row">  
+                        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :icone) do |b| %>
+                          <%= b.label class: "col-sm-1" do%>
+                            <%= b.check_box %>
+                            <a title="texto referente a figura" href="#" class="btn azm-social azm-size-48_indexList azm-r-square azm-android" ><i class="<%= b.text %>"></i></a>   
+                          <%end%>
+                        <% end %>
+                      </div>            
                   </div>
               </div>
 <!-- ######################## -->
