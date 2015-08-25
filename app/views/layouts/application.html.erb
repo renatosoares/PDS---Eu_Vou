@@ -27,15 +27,19 @@
 					<ul class="nav navbar-nav col-sm-5 col-md-5">
 						<li><a href="#">Sobre</a></li>
 						<li><a href="#">Contato</a></li>
-						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ Criar evento <b class="caret"></b></a>
+						<li class="dropdown"> 
+								<a href="#" class="dropdown-toggle btn btn-primary " data-toggle="dropdown">
+									+ Criar evento 
+								</a>
 								<ul class="dropdown-menu">
 									<li style="width: 500px;">
       							<div class="well">
       							<!-- gambiarra -->
+      							<!-- issueRenato -> quando tira o if ocorre erro em outras paginas com o formulário -->
       							  <%= 
-      							  	if request.host+request.fullpath == request.host+"/" then
-      							  		render 'form' 
-      							  	end	
+      							  		if request.host+request.fullpath == request.host+"/" then
+      							  			render 'events/form_events' 
+      							  		end
       							  %>	
       							</div>
 									</li>
@@ -74,7 +78,8 @@
 	<!-- gambiarra -->
   <%= 
   	if request.host+request.fullpath == request.host+"/" then
-  		render file: "events/custom/_carouseul.html.erb"
+  		render 'events/custom/carouseul'
+  		#render file: "events/custom/_carouseul.html.erb"
   	end
   %>
   <!--left ########################################################### -->
