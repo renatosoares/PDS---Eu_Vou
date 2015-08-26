@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ //botão criar evento menu
+li.dropdown:hover{
+	a.dropdown-toggle:active {
+		background-color: red;
+	}
+		a.dropdown-toggle:hover {
+			color:#eee;
+			background-color: #2A6598;
+		b{
+			color:#fff;
+		}
+	}
+}
+// 
+// li.dropdown:focus{
+// 	a.dropdown-toggle:active {
+// 		background-color: green;
+// 	}
+// 		a.dropdown-toggle:hover {
+// 		background-color: black;
+// 	}
+
+//}
+li.dropdown{
+	a.dropdown-toggle{
+		color:#fff;
+		b{
+			color:#fff;
+		}
+	}
+	a.dropdown-toggle:active {
+		background-color: aqua;
+	}
+		a.dropdown-toggle:hover {
+		background-color: black;
+	}
+
+}
+// li.dropdown:active{
+// 	a.dropdown-toggle:active {
+// 		background-color: blue;
+// 	}
+// 		a.dropdown-toggle:hover {
+// 		background-color: green;
+// 	}
+
+// }
